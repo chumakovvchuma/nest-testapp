@@ -1,0 +1,9 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "god.tsconfig": "./packages\\server\\tsconfig.json",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#111A89",
+        "titleBar.activeBackground": "#1725C0",
+        "titleBar.activeForeground": "#F9F9FE"
+    }
+}

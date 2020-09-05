@@ -1,81 +1,35 @@
 {
-   "name": "nest-app",
-   "version": "0.0.1",
-   "description": "",
-   "author": "chumakovvchuma",
-   "private": false,
-   "license": "UNLICENSED",
-   "scripts": {
-      "pretypeorm": "(rm ormconfig.json || :) && ts-node -r tsconfig-paths/register src/scripts/write-type-orm-config.ts",
-      "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-      "typeorm:migration:generate": "npm run typeorm -- migration:generate -n",
-      "typeorm:migration:run": "npm run typeorm -- migration:run",
-      "start:dev:db": "sh ./scripts/start-db.sh",
-      "prebuild": "rimraf dist",
-      "build": "nest build",
-      "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-      "start": "ts-node src/index.ts",
-      "start:dev": "nodemon --config nodemon.json",
-      "start:debug": "nest start --debug --watch",
-      "start:prod": "node dist/main",
-      "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-      "test": "jest",
-      "test:watch": "jest --watch",
-      "test:cov": "jest --coverage",
-      "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-      "test:e2e": "jest --config ./test/jest-e2e.json"
-   },
-   "dependencies": {
-      "@nestjs/common": "^7.0.0",
-      "@nestjs/core": "^7.0.0",
-      "@nestjs/graphql": "^7.6.0",
-      "@nestjs/platform-express": "^7.0.0",
-      "@nestjs/typeorm": "^7.1.3",
-      "dotenv": "^8.2.0",
-      "graphql": "^15.3.0",
-      "graphql-tools": "^6.2.1",
-      "mysql": "^2.18.1",
-      "pg": "^7.3.0",
-      "reflect-metadata": "^0.1.10",
-      "rimraf": "^3.0.2",
-      "rxjs": "^6.5.4",
-      "typeorm": "0.2.25"
-   },
-   "devDependencies": {
-      "@nestjs/cli": "^7.0.0",
-      "@nestjs/schematics": "^7.0.0",
-      "@nestjs/testing": "^7.0.0",
-      "@types/express": "^4.17.3",
-      "@types/jest": "26.0.10",
-      "@types/node": "^8.0.29",
-      "@types/supertest": "^2.0.8",
-      "@typescript-eslint/eslint-plugin": "3.9.1",
-      "@typescript-eslint/parser": "3.9.1",
-      "eslint": "7.7.0",
-      "eslint-config-prettier": "^6.10.0",
-      "eslint-plugin-import": "^2.20.1",
-      "jest": "26.4.2",
-      "nodemon": "^2.0.4",
-      "prettier": "^1.19.1",
-      "supertest": "^4.0.2",
-      "ts-jest": "26.2.0",
-      "ts-loader": "^6.2.1",
-      "ts-node": "3.3.0",
-      "tsconfig-paths": "^3.9.0",
-      "typescript": "3.3.3333"
-   },
-   "jest": {
-      "moduleFileExtensions": [
-         "js",
-         "json",
-         "ts"
-      ],
-      "rootDir": "src",
-      "testRegex": ".spec.ts$",
-      "transform": {
-         "^.+\\.(t|j)s$": "ts-jest"
-      },
-      "coverageDirectory": "../coverage",
-      "testEnvironment": "node"
-   }
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  },
+  "scripts": {
+    "server:dev": "yarn workspace @nestjs-react-graphql-boilerplate/server dev",
+    "client:dev": "yarn workspace @nestjs-react-graphql-boilerplate/client dev",
+    "dev": "concurrently \"yarn server:dev\" \"yarn client:dev\"",
+    "server:build": "yarn workspace @nestjs-react-graphql-boilerplate/server build",
+    "client:build": "yarn workspace @nestjs-react-graphql-boilerplate/client build",
+    "build": "concurrently \"yarn server:build\" \"yarn client:build\"",
+    "server:start": "yarn workspace @nestjs-react-graphql-boilerplate/server start",
+    "client:start": "yarn workspace @nestjs-react-graphql-boilerplate/client start",
+    "start": "concurrently \"yarn server:start\" \"yarn client:start\"",
+    "server:lint": "yarn workspace @nestjs-react-graphql-boilerplate/server lint",
+    "client:lint": "yarn workspace @nestjs-react-graphql-boilerplate/client lint",
+    "lint": "concurrently \"yarn server:lint\" \"yarn client:lint\"",
+    "server:format": "yarn workspace @nestjs-react-graphql-boilerplate/server format",
+    "client:format": "yarn workspace @nestjs-react-graphql-boilerplate/client format",
+    "format": "concurrently \"yarn server:format\" \"yarn client:format\"",
+    "server:test": "yarn workspace @nestjs-react-graphql-boilerplate/server test",
+    "client:test": "yarn workspace @nestjs-react-graphql-boilerplate/client test",
+    "test": "concurrently \"yarn server:test\" \"yarn client:test\"",
+    "server:test:watch": "yarn workspace @nestjs-react-graphql-boilerplate/server test:watch",
+    "client:test:watch": "yarn workspace @nestjs-react-graphql-boilerplate/client test:watch",
+    "test:watch": "concurrently \"yarn server:test:watch\" \"yarn client:test:watch\"",
+    "server:test:cov": "yarn workspace @nestjs-react-graphql-boilerplate/server test:cov",
+    "client:test:cov": "yarn workspace @nestjs-react-graphql-boilerplate/client test:cov",
+    "test:cov": "concurrently \"yarn server:test:cov\" \"yarn client:test:cov\""
+  }
 }
