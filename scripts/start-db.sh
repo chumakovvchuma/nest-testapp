@@ -1,9 +1,10 @@
+
 #!/bin/bash
 set -e
 
-SERVER="my_database_server";
-PW="mysecretpassword";
-DB="my_database";
+SERVER="nest-app_db_1";
+PW="example";
+DB="nestappdb";
 
 echo "echo stop & remove old docker [$SERVER] and starting new fresh instance of [$SERVER]"
 (docker kill $SERVER || :) && \
@@ -15,7 +16,7 @@ echo "echo stop & remove old docker [$SERVER] and starting new fresh instance of
 
 # wait for pg to start
 echo "sleep wait for pg-server [$SERVER] to start";
-SLEEP 3;
+SLEEP 10;
 
 # create the db 
 echo "CREATE DATABASE $DB ENCODING 'UTF-8';" | docker exec -i $SERVER psql -U postgres
